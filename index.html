@@ -114,7 +114,7 @@
 
     <header>
         <h3>Ningalkum Aakam Koodeshwaran Soundboard</h3>
-        <img src="Sounds/logo.webp" alt="koodeshwaran" width="100" height="100">
+        <img src="sounds/logo.webp" alt="koodeshwaran" width="100" height="100">
     </header>
 
     <div class="controls-container">
@@ -124,9 +124,6 @@
     <main id="soundboard-grid"></main>
 
     <script>
-        /**
-         * Configuration Array
-         */
         const SOUNDS = [
             { label: "Ticking", file: "Tick.mp3" },
             { label: "Incorrect Buzzer", file: "Wrong.mp3" },
@@ -137,12 +134,10 @@
             { label: "Contestant 3 Intro music", file: "OUAT.mp3" }
         ];
 
-
         const grid = document.getElementById('soundboard-grid');
         const killSwitchBtn = document.getElementById('kill-switch-btn');
         const audioInstances = {};
 
-        // Pre-load audio objects
         SOUNDS.forEach(sound => {
             const audio = new Audio(`sounds/${sound.file}`);
             audio.preload = 'auto';
@@ -168,14 +163,12 @@
         }
 
         function initializeBoard() {
-            // Setup Kill Switch
             killSwitchBtn.addEventListener('pointerdown', (e) => {
                 if (e.pointerType === 'mouse' && e.button !== 0) return;
                 stopAllSounds();
             });
             killSwitchBtn.addEventListener('contextmenu', e => e.preventDefault());
 
-            // Setup Sound Buttons
             SOUNDS.forEach(sound => {
                 const btn = document.createElement('button');
                 btn.className = 'base-btn sound-btn';
@@ -196,9 +189,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
